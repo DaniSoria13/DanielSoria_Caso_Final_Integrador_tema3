@@ -1,5 +1,8 @@
-//
-// Created by User on 25/11/2024.
-//
+#include <iostream>
+#include "load_script.h"
 
-#include "main.h"
+using namespace std;
+
+int main() {
+    load_script();
+}
