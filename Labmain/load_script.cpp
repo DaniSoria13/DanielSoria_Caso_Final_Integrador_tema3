@@ -3,12 +3,14 @@
 #include <cstdio>
 #include "load_script.h"
 
+#include <string.h>
+
 using namespace std;
 
 ConsoleBox *consoleBox = new ConsoleBox; // suponemos que ya está inicializado
 
 
-void load_script(const char* filename, bool show_script = false)
+void load_script(const char* filename, bool show_script)
 {
     if (!consoleBox) // Validación de que consoleBox está inicializado
     {
