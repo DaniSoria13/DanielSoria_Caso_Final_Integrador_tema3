@@ -76,10 +76,17 @@ void load_script(const char* filename, bool show_script = false)
             fclose(f);
     }
 }
+
+
 void load_script()
 {
     char filename[500];
     printf("Archivo: ");
-    scanf("%499s", filename);
+    if (scanf("%499s", filename) != 1) // Comprobación de errores de entrada
+    {
+        cerr << "Error: no se pudo leer el nombre del archivo." << endl;
+        return;
+    }
+
     load_script(filename, true);
 }
