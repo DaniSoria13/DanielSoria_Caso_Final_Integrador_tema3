@@ -1,5 +1,5 @@
 #include <iostream>
-#include "load_script.h"
+#include "Labmain/load_script.h"
 
 using namespace std;
 
