@@ -46,7 +46,10 @@ Por último, ten en cuenta que este código no realiza una comprobación complet
 
 # Correción de Caso Final Integrador Tema 3 de Juan Ignacio González de la Peña
 
-· Incluye comentarios explicando como funciona el código
-· Incluye buen manejo de errores, como asegurarse de que el filename no esté vacío, de que el usuario ingrese un valor o detectar errores al leer el archivo.
-· La estructura del código es ordenada y se entiende perfectamente
+· Incluye comentarios explicando como funciona el código                                                                                                                                                                                                
+· Incluye buen manejo de errores, como asegurarse de que el filename no esté vacío, de que el usuario ingrese un valor o detectar errores al leer el archivo.                                                                                                              
+· La estructura del código es ordenada y se entiende perfectamente.                                                                                                                                      
+
+· Cosas a mejorar: Asegurarse de que el buffer se inicialice antes de la lectura, captura específica de std::exception para mensajes claros, y limitar la longitud de filename para evitar desbordamientos.                                
+
 Nota 8/10
