@@ -3,14 +3,16 @@
 https://github.com/DaniSoria13/DanielSoria_Caso_Final_Integrador_tema3.git
 
 Trabajos prácticos
-1. Carga de scripts en tiny-lisp
+### 1. Carga de scripts en tiny-lisp
 El módulo Labmain.cpp define la función load_script(), que se utiliza para cargar un script en la memoria y aplicarle la coloración sintáctica. Esta función se basa en la librería estándar de C.
 
 Implementa las funciones load_script() y load_script(filename, true) en CLion, de tal manera que puedas abrir y leer archivos de texto. El primer método toma el nombre de un archivo como entrada del usuario, mientras que el segundo muestra el contenido del archivo. Ambos métodos deben cargar el script en la consola.
 
 void load_script(const char* filename, bool show_script = false);
 void load_script();
-2. Asegurando la robustez del código
+
+
+### 2. Asegurando la robustez del código
 Asegúrate de que tu código pueda manejar diferentes tipos de errores de entrada. Esto incluye, pero no se limita a:
 
 El usuario proporciona un nombre de archivo que no existe.
@@ -37,74 +39,14 @@ Total: 100 puntos
 Propuesta de solución
 En CLion, las funciones seguras de la biblioteca estándar de C (*_s funciones) generalmente no están disponibles porque estas son específicas de Microsoft y no son estándar de C/C++. Por lo tanto, en lugar de utilizar funciones como fopen_s, printf_s y scanf_s, puedes usar sus equivalentes no seguros, que son fopen, printf y scanf.
 
-A continuación se muestra cómo se podría reescribir el código para CLion:
-
-#include <iostream>
-#include <string>
-#include <cstdio>
-
-using namespace std;
-
-struct ColorConsole
-{
-    static constexpr auto fg_blue = "\033[34m";
-    static constexpr auto bg_white = "\033[47m";
-};
-
-struct ConsoleBox
-{
-    void new_text() {/*...*/}
-    void set_text(const string &text) { cout << text << endl; }
-};
-
-ConsoleBox *consoleBox = new ConsoleBox; // suponemos que ya está inicializado
-
-void load_script(const char* filename, bool show_script = false)
-{
-    string script;
-    FILE* f = nullptr;
-    try
-    {
-        f = fopen(filename, "rb");
-        if (!f)
-        {
-            cerr << "error de apertura de " << filename << endl;
-            return;
-        }
-
-        int c;
-        char buf[4001];
-        while ((c = fread(buf, 1, 4000, f)) > 0)
-        {
-            buf[c] = 0;
-            script.append(buf);
-        }
-        fclose(f);
-        f = nullptr;
-
-        if (show_script)
-        {
-            cout << ColorConsole::fg_blue << ColorConsole::bg_white;
-            cout << script << endl;
-        }
-        consoleBox->new_text();
-        consoleBox->set_text(script);
-    }
-    catch (...)
-    {
-        cerr << "error durante la lectura del archivo" << endl;
-        if(f)
-            fclose(f);
-    }
-}
-
-void load_script()
-{
-    char filename[500];
-    printf("Archivo: ");
-    scanf("%499s", filename);
-    load_script(filename, true);
-}
 Este código debería compilar y funcionar en CLion sin necesidad de agregar la directiva _CRT_SECURE_NO_WARNINGS, ya que no se están utilizando las versiones seguras específicas de Microsoft de las funciones de la biblioteca estándar de C.
 
 Por último, ten en cuenta que este código no realiza una comprobación completa de errores y no es robusto contra varios tipos de errores de entrada. Dependiendo de tu caso de uso específico, es posible que desees agregar comprobaciones de errores adicionales y manejar los fallos de manera más sofisticada.
+
+
+# Correción de Caso Final Integrador Tema 3 de Juan Ignacio González de la Peña
+
+· Incluye comentarios explicando como funciona el código
+· Incluye buen manejo de errores, como asegurarse de que el filename no esté vacío, de que el usuario ingrese un valor o detectar errores al leer el archivo.
+· La estructura del código es ordenada y se entiende perfectamente
+Nota 8/10
